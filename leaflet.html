@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Leaflet sample</title>
+      <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+      <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+   </head>
+
+   <body>
+      <div id = "map" style = "width: 1000px; height: 680px"></div>
+      <script>
+         
+         
+         var PTTR_A = L.tileLayer.wms('http://localhost:8080/geoserver/wms', {
+         layers: 'powiat_gizycki:PTTR_A',
+         format: 'image/png',
+         transparent: true
+         });
+         var BUBD_A = L.tileLayer.wms('http://localhost:8080/geoserver/wms', {
+         layers: 'powiat_gizycki:BUBD_A',
+         format: 'image/png',
+         transparent: true
+         });
+         var PTZB_A = L.tileLayer.wms('http://localhost:8080/geoserver/wms', {
+         layers: 'powiat_gizycki:PTZB_A',
+         format: 'image/png',
+         transparent: true
+         });
+         var PTWP_A = L.tileLayer.wms('http://localhost:8080/geoserver/wms', {
+         layers: 'powiat_gizycki:PTWP_A',
+         format: 'image/png',
+         transparent: true
+         });
+         var SKJZ_L1 = L.tileLayer.wms('http://localhost:8080/geoserver/wms', {
+         layers: 'powiat_gizycki:SKJZ_L1',
+         format: 'image/png',
+         transparent: true
+         });
+
+         var mapOptions = {
+            center: [54.038347, 21.762427],
+            zoom: 10
+         }
+
+         var map = new L.map('map', mapOptions);
+
+         var layers = {
+            "Budynki": BUBD_A,
+            "Jezdnie": SKJZ_L1,
+            "Zabudowa": PTZB_A,
+            "Roślinność trawiasta i uprawa rolna": PTTR_A,
+            "Woda powierzchniowa": PTWP_A,
+         }
+
+var layerControl = L.control.layers(null, layers).addTo(map);
+
+
+      </script>
+   </body>
+   
+</html>
